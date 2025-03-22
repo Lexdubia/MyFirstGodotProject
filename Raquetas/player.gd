@@ -1,8 +1,8 @@
 class_name Player extends CharacterBody2D
 
-@export var max_speed: float = 400  # Velocidad máxima
+@export var max_speed: float = 500  # Velocidad máxima
 @export var acceleration: float = 800  # Qué tan rápido acelera
-@export var friction: float = 1000  # Qué tan rápido desacelera
+@export var friction: float = 5000  # Qué tan rápido desacelera
 
 func _physics_process(delta):
 	var direction = 0
