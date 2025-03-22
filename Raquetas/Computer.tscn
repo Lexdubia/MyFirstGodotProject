@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://bw2u6fpimnw44"]
+
+[ext_resource type="Script" path="res://Raquetas/computer.gd" id="1_3afih"]
+[ext_resource type="Texture2D" uid="uid://2fiiodaxd4yb" path="res://kenney_puzzle-pack/png/paddleRed.png" id="2_hpuxt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kabbh"]
+size = Vector2(17, 103)
+
+[node name="Computer" type="CharacterBody2D"]
+position = Vector2(1180, 360)
+script = ExtResource("1_3afih")
+acceleration = 800.0
+deceleration = 400.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 1.5708
+texture = ExtResource("2_hpuxt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-3.5, 0.5)
+shape = SubResource("RectangleShape2D_kabbh")

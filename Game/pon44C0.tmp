@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=3 uid="uid://dts05in2s6850"]
+
+[ext_resource type="PackedScene" uid="uid://dhwddsu8l6522" path="res://Raquetas/player.tscn" id="1_c72cg"]
+[ext_resource type="Texture2D" uid="uid://cvavksn1pr2gq" path="res://kenney_puzzle-pack/png/element_green_rectangle.png" id="2_boats"]
+[ext_resource type="PackedScene" uid="uid://cjkncunj2m135" path="res://Raquetas/ball.tscn" id="3_0043u"]
+[ext_resource type="PackedScene" uid="uid://c17ovqbitp0m8" path="res://Raquetas/Computer.tscn" id="4_frav0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i4xaa"]
+size = Vector2(64.0526, 30)
+
+[node name="Pong" type="Node"]
+
+[node name="Player" parent="." instance=ExtResource("1_c72cg")]
+
+[node name="UpWall" type="StaticBody2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="UpWall"]
+position = Vector2(640, 20)
+scale = Vector2(19, 1)
+texture = ExtResource("2_boats")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="UpWall"]
+position = Vector2(640.5, 20)
+scale = Vector2(19, 1)
+shape = SubResource("RectangleShape2D_i4xaa")
+
+[node name="DownWall" type="StaticBody2D" parent="."]
+position = Vector2(0, 680)
+
+[node name="Sprite2D" type="Sprite2D" parent="DownWall"]
+position = Vector2(640, 20)
+scale = Vector2(19, 1)
+texture = ExtResource("2_boats")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DownWall"]
+position = Vector2(640.5, 20)
+scale = Vector2(19, 1)
+shape = SubResource("RectangleShape2D_i4xaa")
+
+[node name="Ball" parent="." instance=ExtResource("3_0043u")]
+
+[node name="Player2" parent="." instance=ExtResource("4_frav0")]

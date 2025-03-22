@@ -1,0 +1,75 @@
+[gd_scene load_steps=4 format=3 uid="uid://bjowd67mp6no2"]
+
+[ext_resource type="Theme" uid="uid://cu3n5g6d6gumf" path="res://UI/Tema1.tres" id="1_6hvm3"]
+[ext_resource type="Script" path="res://UI/main_menu.gd" id="1_lnoio"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xuv6y"]
+bg_color = Color(0.0784314, 0.235294, 0.372549, 1)
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -700.0
+offset_top = -385.0
+offset_right = 700.0
+offset_bottom = 387.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_6hvm3")
+script = ExtResource("1_lnoio")
+
+[node name="BackGround_Image" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 10.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_xuv6y")
+
+[node name="Label" type="Label" parent="BackGround_Image"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 132.0
+offset_bottom = 260.0
+grow_horizontal = 2
+theme = ExtResource("1_6hvm3")
+text = "PONG"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -171.0
+offset_top = 7.5
+offset_right = 171.0
+offset_bottom = 117.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_6hvm3")
+theme_override_constants/separation = 10
+
+[node name="Comenzar" type="Button" parent="VBoxContainer" groups=["menu_buttons"]]
+layout_mode = 2
+theme = ExtResource("1_6hvm3")
+text = "COMENZAR"
+icon_alignment = 1
+
+[node name="Salir" type="Button" parent="VBoxContainer" groups=["menu_buttons"]]
+layout_mode = 2
+theme = ExtResource("1_6hvm3")
+text = "SALIR"
+
+[connection signal="pressed" from="VBoxContainer/Comenzar" to="." method="_on_comenzar_pressed"]
+[connection signal="pressed" from="VBoxContainer/Salir" to="." method="_on_salir_pressed"]

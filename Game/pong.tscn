@@ -1,0 +1,225 @@
+[gd_scene load_steps=17 format=3 uid="uid://dts05in2s6850"]
+
+[ext_resource type="PackedScene" uid="uid://dhwddsu8l6522" path="res://Raquetas/player.tscn" id="1_c72cg"]
+[ext_resource type="Script" path="res://Game/pong.gd" id="1_sbqek"]
+[ext_resource type="Texture2D" uid="uid://cvavksn1pr2gq" path="res://kenney_puzzle-pack/png/element_green_rectangle.png" id="2_boats"]
+[ext_resource type="Script" path="res://Game/game_manager.gd" id="2_lsb8c"]
+[ext_resource type="PackedScene" uid="uid://cjkncunj2m135" path="res://Raquetas/ball.tscn" id="3_0043u"]
+[ext_resource type="PackedScene" uid="uid://bw2u6fpimnw44" path="res://Raquetas/Computer.tscn" id="4_frav0"]
+[ext_resource type="Texture2D" uid="uid://ds32lsmbr35ry" path="res://kenney_puzzle-pack/png/middle-line.png" id="6_kpbhd"]
+[ext_resource type="FontFile" uid="uid://v7dkr3mtpt1t" path="res://kenney_puzzle-pack/Font_ThetamaxItalic.otf" id="7_j5hbu"]
+[ext_resource type="PackedScene" uid="uid://bodofwnvb7ueo" path="res://UI/pause_menu.tscn" id="8_078s6"]
+[ext_resource type="AudioStream" uid="uid://dajl6nlsl6uxj" path="res://sounds/player_goal.wav" id="9_s1f1x"]
+[ext_resource type="AudioStream" uid="uid://sj62e067tvrc" path="res://sounds/computer_goal.wav" id="10_4a0rm"]
+[ext_resource type="AudioStream" uid="uid://d1cd04ldb82dc" path="res://sounds/victory.wav" id="11_aietu"]
+[ext_resource type="Theme" uid="uid://cu3n5g6d6gumf" path="res://UI/Tema1.tres" id="13_c1462"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n1c2f"]
+size = Vector2(20, 637)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i4xaa"]
+size = Vector2(64.0526, 30)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ykjq6"]
+font = ExtResource("7_j5hbu")
+font_size = 90
+font_color = Color(0.505882, 0.286275, 0.329412, 1)
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+shadow_color = Color(0.866667, 0.921569, 0.615686, 1)
+shadow_offset = Vector2(8, 4)
+
+[node name="Pong" type="Node"]
+script = ExtResource("1_sbqek")
+
+[node name="GameManager" type="Node" parent="."]
+script = ExtResource("2_lsb8c")
+
+[node name="Escenario" type="Node2D" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="Escenario"]
+offset_left = -78.0
+offset_top = -52.0
+offset_right = 1350.0
+offset_bottom = 767.0
+color = Color(0.0784314, 0.239216, 0.376471, 1)
+
+[node name="Middle-line" type="Sprite2D" parent="Escenario"]
+position = Vector2(640, 360)
+texture = ExtResource("6_kpbhd")
+
+[node name="Middle-line2" type="Sprite2D" parent="Escenario"]
+position = Vector2(45, 360)
+texture = ExtResource("6_kpbhd")
+
+[node name="Middle-line3" type="Sprite2D" parent="Escenario"]
+position = Vector2(1237, 360)
+texture = ExtResource("6_kpbhd")
+
+[node name="ComputerGoal" type="Area2D" parent="Escenario"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Escenario/ComputerGoal"]
+position = Vector2(40, 359)
+shape = SubResource("RectangleShape2D_n1c2f")
+
+[node name="PlayerGoal" type="Area2D" parent="Escenario"]
+position = Vector2(1200, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Escenario/PlayerGoal"]
+position = Vector2(40, 359)
+shape = SubResource("RectangleShape2D_n1c2f")
+
+[node name="UpWall" type="StaticBody2D" parent="Escenario"]
+
+[node name="Sprite2D" type="Sprite2D" parent="Escenario/UpWall"]
+position = Vector2(640, 20)
+scale = Vector2(19, 1)
+texture = ExtResource("2_boats")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Escenario/UpWall"]
+position = Vector2(640.5, 20)
+scale = Vector2(19, 1)
+shape = SubResource("RectangleShape2D_i4xaa")
+
+[node name="DownWall" type="StaticBody2D" parent="Escenario"]
+position = Vector2(0, 680)
+
+[node name="Sprite2D" type="Sprite2D" parent="Escenario/DownWall"]
+position = Vector2(640, 20)
+scale = Vector2(19, 1)
+texture = ExtResource("2_boats")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Escenario/DownWall"]
+position = Vector2(640.5, 20)
+scale = Vector2(19, 1)
+shape = SubResource("RectangleShape2D_i4xaa")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(640, 360)
+
+[node name="Player" parent="." instance=ExtResource("1_c72cg")]
+
+[node name="Ball" parent="." instance=ExtResource("3_0043u")]
+
+[node name="Computer" parent="." instance=ExtResource("4_frav0")]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="PlayerScore" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 474.0
+offset_top = 67.0
+offset_right = 571.0
+offset_bottom = 158.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.0470588, 0.627451, 0.807843, 1)
+theme_override_colors/font_shadow_color = Color(0.627451, 0.784314, 0.470588, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 8
+theme_override_constants/shadow_offset_y = 4
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("7_j5hbu")
+theme_override_font_sizes/font_size = 90
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ComputerScore" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 659.0
+offset_top = 67.0
+offset_right = 756.0
+offset_bottom = 158.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.360784, 0.721569, 0.403922, 1)
+theme_override_colors/font_shadow_color = Color(0.627451, 0.784314, 0.470588, 1)
+theme_override_colors/font_outline_color = Color(0.54902, 0.376471, 0.419608, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("7_j5hbu")
+theme_override_font_sizes/font_size = 50
+text = "0"
+label_settings = SubResource("LabelSettings_ykjq6")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VictoryLabel" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 135.5
+offset_top = 286.0
+offset_right = 1104.5
+offset_bottom = 394.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("13_c1462")
+theme_override_font_sizes/font_size = 100
+text = "¡Has ganado!"
+
+[node name="CountdownLabel" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 541.0
+offset_top = 260.5
+offset_right = 699.0
+offset_bottom = 419.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("13_c1462")
+text = "3"
+
+[node name="NewPointLabel" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 535.5
+offset_top = 521.0
+offset_right = 704.5
+offset_bottom = 680.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("13_c1462")
+theme_override_font_sizes/font_size = 100
+text = "0"
+
+[node name="Pause_menu" parent="." instance=ExtResource("8_078s6")]
+visible = false
+
+[node name="GoalPlayerSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_s1f1x")
+bus = &"FX"
+
+[node name="WinSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_aietu")
+bus = &"FX"
+
+[node name="LoseSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_4a0rm")
+bus = &"FX"
+
+[node name="GoalComputerSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_4a0rm")
+bus = &"FX"
+
+[connection signal="body_entered" from="Escenario/ComputerGoal" to="." method="_on_computer_goal_body_entered"]
+[connection signal="body_entered" from="Escenario/PlayerGoal" to="." method="_on_player_goal_body_entered"]

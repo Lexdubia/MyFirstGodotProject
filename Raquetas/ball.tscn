@@ -1,0 +1,61 @@
+[gd_scene load_steps=10 format=3 uid="uid://cjkncunj2m135"]
+
+[ext_resource type="Script" path="res://Raquetas/ball.gd" id="1_y2pu3"]
+[ext_resource type="Texture2D" uid="uid://3ewcg50pu03a" path="res://kenney_puzzle-pack/png/ballGrey.png" id="2_vf6ro"]
+[ext_resource type="AudioStream" uid="uid://clv6prq5kulry" path="res://sounds/player_sound.wav" id="3_c1v3k"]
+[ext_resource type="AudioStream" uid="uid://mhbq4qgv77g" path="res://sounds/computer_sound.wav" id="4_ymvce"]
+[ext_resource type="AudioStream" uid="uid://cjqbldyxcajcj" path="res://sounds/bounce_sound.wav" id="5_q4c0x"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_77v1p"]
+radius = 11.0
+
+[sub_resource type="Curve" id="Curve_t6xtx"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.887641, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_26h11"]
+offsets = PackedFloat32Array(0, 0.66, 1)
+colors = PackedColorArray(0.822974, 0.885123, 0.514307, 1, 0.517647, 0.564706, 0.231373, 0.858824, 0.665187, 0.088563, 0.257962, 1)
+
+[sub_resource type="Curve" id="Curve_3v74v"]
+min_value = -1.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, -0.186813), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="Ball" type="CharacterBody2D"]
+position = Vector2(640, 360)
+script = ExtResource("1_y2pu3")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_vf6ro")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_77v1p")
+
+[node name="hit_player" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_c1v3k")
+volume_db = 5.0
+
+[node name="hit_computer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_ymvce")
+volume_db = 3.0
+
+[node name="hit_bounce" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_q4c0x")
+volume_db = 5.0
+
+[node name="Particles" type="CPUParticles2D" parent="."]
+amount = 30
+lifetime = 0.7
+randomness = 0.5
+lifetime_randomness = 0.5
+emission_shape = 1
+emission_sphere_radius = 5.0
+gravity = Vector2(0, 0)
+scale_amount_min = 3.0
+scale_amount_max = 15.0
+scale_amount_curve = SubResource("Curve_t6xtx")
+color = Color(0.979477, 0.988134, 0.948817, 1)
+color_ramp = SubResource("Gradient_26h11")
+hue_variation_max = 0.2
+hue_variation_curve = SubResource("Curve_3v74v")

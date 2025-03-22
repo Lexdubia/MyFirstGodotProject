@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://dhwddsu8l6522"]
+
+[ext_resource type="Script" path="res://Raquetas/player.gd" id="1_slug1"]
+[ext_resource type="Texture2D" uid="uid://cpr4poj3g4plw" path="res://kenney_puzzle-pack/png/paddleBlu.png" id="2_3yxi1"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_86wa0"]
+radius = 12.0
+height = 104.0
+
+[node name="Player" type="CharacterBody2D"]
+position = Vector2(100, 360)
+script = ExtResource("1_slug1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 1.5708
+texture = ExtResource("2_3yxi1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_86wa0")
