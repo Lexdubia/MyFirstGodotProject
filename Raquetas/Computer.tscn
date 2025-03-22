@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://bw2u6fpimnw44"]
 
-[ext_resource type="Script" path="res://Raquetas/computer.gd" id="1_3afih"]
+[ext_resource type="Script" uid="uid://nhplfn43ehvx" path="res://Raquetas/computer.gd" id="1_3afih"]
 [ext_resource type="Texture2D" uid="uid://2fiiodaxd4yb" path="res://kenney_puzzle-pack/png/paddleRed.png" id="2_hpuxt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kabbh"]

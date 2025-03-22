@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dhwddsu8l6522"]
 
-[ext_resource type="Script" path="res://Raquetas/player.gd" id="1_slug1"]
+[ext_resource type="Script" uid="uid://d2pts6tyydsq5" path="res://Raquetas/player.gd" id="1_slug1"]
 [ext_resource type="Texture2D" uid="uid://cpr4poj3g4plw" path="res://kenney_puzzle-pack/png/paddleBlu.png" id="2_3yxi1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aeq3h"]

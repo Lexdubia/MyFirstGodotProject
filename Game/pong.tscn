@@ -1,9 +1,9 @@
 [gd_scene load_steps=17 format=3 uid="uid://dts05in2s6850"]
 
 [ext_resource type="PackedScene" uid="uid://dhwddsu8l6522" path="res://Raquetas/player.tscn" id="1_c72cg"]
-[ext_resource type="Script" path="res://Game/pong.gd" id="1_sbqek"]
+[ext_resource type="Script" uid="uid://7d4ynufwqy31" path="res://Game/pong.gd" id="1_sbqek"]
 [ext_resource type="Texture2D" uid="uid://cvavksn1pr2gq" path="res://kenney_puzzle-pack/png/element_green_rectangle.png" id="2_boats"]
-[ext_resource type="Script" path="res://Game/game_manager.gd" id="2_lsb8c"]
+[ext_resource type="Script" uid="uid://ceewh2nmmh8ou" path="res://Game/game_manager.gd" id="2_lsb8c"]
 [ext_resource type="PackedScene" uid="uid://cjkncunj2m135" path="res://Raquetas/ball.tscn" id="3_0043u"]
 [ext_resource type="PackedScene" uid="uid://bw2u6fpimnw44" path="res://Raquetas/Computer.tscn" id="4_frav0"]
 [ext_resource type="Texture2D" uid="uid://ds32lsmbr35ry" path="res://kenney_puzzle-pack/png/middle-line.png" id="6_kpbhd"]

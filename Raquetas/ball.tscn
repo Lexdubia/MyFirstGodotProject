@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://cjkncunj2m135"]
 
-[ext_resource type="Script" path="res://Raquetas/ball.gd" id="1_y2pu3"]
+[ext_resource type="Script" uid="uid://dh2vpcsquvt0e" path="res://Raquetas/ball.gd" id="1_y2pu3"]
 [ext_resource type="Texture2D" uid="uid://3ewcg50pu03a" path="res://kenney_puzzle-pack/png/ballGrey.png" id="2_vf6ro"]
 [ext_resource type="AudioStream" uid="uid://clv6prq5kulry" path="res://sounds/player_sound.wav" id="3_c1v3k"]
 [ext_resource type="AudioStream" uid="uid://mhbq4qgv77g" path="res://sounds/computer_sound.wav" id="4_ymvce"]
@@ -18,7 +18,7 @@ offsets = PackedFloat32Array(0, 0.66, 1)
 colors = PackedColorArray(0.822974, 0.885123, 0.514307, 1, 0.517647, 0.564706, 0.231373, 0.858824, 0.665187, 0.088563, 0.257962, 1)
 
 [sub_resource type="Curve" id="Curve_3v74v"]
-min_value = -1.0
+_limits = [-1.0, 1.0, 0.0, 1.0]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, -0.186813), 0.0, 0.0, 0, 0]
 point_count = 2
 
